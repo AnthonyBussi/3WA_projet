@@ -1,0 +1,78 @@
+<?php $adminController = new AdminController()?>
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Liverpool Actualités</title>
+        <meta charset="UTF-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/ba11807cf4.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="view/img/favicon.png" />
+	    <link rel="stylesheet" href="view/css/normalize.css">
+	    <link rel="stylesheet" href="view/css/style.css">
+	    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header class="layout-header">
+            <div id="scroll-line"></div>
+            <h1 id="title"><i class="fas fa-futbol"></i>LIVERPOOL ACTUALITÉS<i class="fas fa-futbol"></i></h1>              
+                <?php if(!$adminController->is_connect()):?>
+                    <nav id="layout-nav">  
+                        <a href="index.php?action=home">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>    
+                            <i class="fas fa-home"></i>ACCUEIL
+                        </a>
+                        <a href="index.php?action=news">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>    
+                            <i class="far fa-newspaper"></i>ACTUALITÉS
+                        </a>
+                        <a href="index.php?action=contact">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <i class="far fa-envelope"></i>CONTACT
+                        </a>
+                        <a href="index.php?action=about">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <i class="far fa-question-circle"></i>À PROPOS
+                        </a>
+                    </nav>
+                <?php endif;?>
+            </nav>
+            <div>
+                <?php if($adminController->is_connect()):?>
+                    <div class="layout-header-admin-connected">
+                        <a href="index.php?action=retourMenu">Menu</a>
+                        <a href="index.php?action=deconnexion">Déconnexion</a>
+                    </div>
+                <?php endif;?>
+            </div>
+        </header>
+        <main>
+            <section class="layout-main">
+                <?php include $template;?>
+            </section>
+            <div class="message-alert">
+                <?php  if(isset($message)):?>
+                <p><?= $message?></p>
+                <?php endif; ?>
+            </div>
+        </main>
+        <footer class="layout-footer">        
+            <img src="view/img/layout/footer/footer-logo-1.png" alt="Logo" class="footer-logo">
+            <img src="view/img/layout/footer/footer-logo-2.png" alt="Logo" class="footer-logo">
+            <a href="#title" title="Retour en haut">Retour en haut</a>
+        </footer>
+        <script src="view/js/script.js"></script>
+    </body>
+</html>

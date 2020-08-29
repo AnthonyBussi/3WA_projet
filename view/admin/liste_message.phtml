@@ -1,0 +1,27 @@
+<?php
+$this->adminController=new AdminController();
+if(!$this->adminController->is_connect()):
+header("location:index.php");
+endif; ?>
+<section  class="admin_view_message container">
+    <div class="message-title">
+        <h2>Espace administrateur</h2>
+        <h3>Messages reçus</h3>
+    </div>
+    <section class="admin_list_mess">
+        <?php foreach($messagesInBdd as $messageInBdd):?>
+            <div class="message">
+                <div class="contact-pseudo">
+                <p>Nom du contact : <?=htmlspecialchars($messageInBdd["pseudo"])?></p>
+                </div>
+                <div class="contact-message">                    
+                <p>Message :</p>
+                <p><?=htmlspecialchars($messageInBdd["message"])?></p>
+                </div>
+                <div class="delete-message">
+                    <a href="index.php?action=deleteContact&id=<?=$messageInBdd["id"]?>"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+        <?php endforeach?>
+    </section>
+</section>

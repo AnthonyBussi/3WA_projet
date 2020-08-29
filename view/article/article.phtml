@@ -1,0 +1,21 @@
+<section class="actu_article container">
+<h2>L'actu en bref</h2>
+    <article id="articleVisible">
+        <?php foreach($lastArticle as $article):?> 
+            <h3><?=htmlspecialchars($article["title"])?></h3>
+            <img src="view/img/articles/<?=$article["picture"]?>" alt="Photo d'illustration"/>
+            <p><?=htmlspecialchars($article["content"])?></p>
+            <p><?=htmlspecialchars($article["date"])?></p>
+        <?php endforeach?>
+    </article>
+    <aside>            
+        <?php foreach($allArticles as $art):?>
+            <div class="last-articles">
+                <h4><?=htmlspecialchars($art["title"])?></h4>
+                <p><?=htmlspecialchars(substr($art["content"], 0, 100))?>[...]</p>
+                <p><?=htmlspecialchars($art["date"])?></p>
+                <button class="executer" value="<?=$art["id"]?>">Lire l'article</button>
+            </div>
+        <?php endforeach?>  
+    </aside>
+</section>

@@ -1,0 +1,26 @@
+<?php
+$this->adminController=new AdminController();
+if(!$this->adminController->is_connect()):
+header("location:index.php");
+endif;?>
+<section class="admin_list_articles container"> 
+    <h2>Listes des Articles</h2>
+    <a href="index.php?action=redigerArticle">Rédiger un nouvel article</a>
+      <?php foreach($articles as $article):?>
+        <div class="admin_article">
+          <article>
+            <h3><?=htmlspecialchars($article["title"])?></h3>
+            <div class="list-article-content">
+              <img src="view/img/articles/<?=$article["picture"]?>" alt="Photo d'article">
+              <div>
+                <?=htmlspecialchars($article["content"])?>
+              </div>
+            </div>
+          </article>
+          <div class="link">
+            <a href="index.php?action=modifierArticle&id=<?=$article["id"]?>">Modifier l'article <i class="fas fa-edit"></i></a>
+            <a href="index.php?action=deleteArticle&id=<?=$article["id"]?>">Supprimer l'article <i class="fas fa-trash-alt"></i></a>
+          </div>
+        </div>
+      <?php endforeach?>
+</section>

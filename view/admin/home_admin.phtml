@@ -1,0 +1,13 @@
+<?php
+$this->adminController=new AdminController();
+if(!$this->adminController->is_connect()):
+header("location:index.php");
+endif;?>
+
+<section class="admin_connected container">
+    <h2>Espace administrateur</h2>
+    <div>
+        <a href="index.php?action=showArticle"><i class="far fa-newspaper"></i>Gérer les articles </a>
+        <a href="index.php?action=showContact"><i class="far fa-envelope"></i>Voir les messages reçus</a>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<?php
+$this->adminController=new AdminController();
+if(!$this->adminController->is_connect()):
+header("location:index.php");
+endif; ?>
+
+<section class="admin_add_article container">
+    <h2>Rédiger un article</h2>
+    <form action="index.php?action=addArticle" enctype="multipart/form-data" method="POST"> 
+        <label for="titre">Titre : </label><input type="text" name="titre" id="titre" placeholder="Titre de l'article">
+        <label for="contenu">Contenu :</label><textarea rows="4" cols="20" name ="contenu" id="contenu" placeholder="Saisir le contenu de l'article"></textarea>
+        <label for="image">Illustration : </label><input type="file" name="image" id="image">
+        <div class="buttons">
+            <button type="submit">AJOUTER</button>
+            <button type="reset">RÉINITIALISER</button>
+        </div>
+    </form>
+</section>
